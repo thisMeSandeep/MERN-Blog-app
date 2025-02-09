@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Image from "./image";
+import { Link } from "react-router-dom"
 
 
 const navlinks = [
@@ -17,10 +18,10 @@ const Navbar = () => {
     return (
         <div className="w-full h-16 md:h-20 flex items-center justify-between">
             {/* logo */}
-            <div className="flex items-center gap-4 text-lg font-bold">
+            <Link to="/" className="flex items-center gap-4 text-lg font-bold">
                 <Image src="logo.png" alt="logo" className={"size-8"} />
                 <span >Sandy's Blog </span>
-            </div>
+            </Link>
 
 
             {/* mobile menu */}
@@ -36,7 +37,7 @@ const Navbar = () => {
                     <div className="flex flex-col items-center justify-center gap-8 xl:gap-12">
                         {
                             navlinks.map((item, index) => (
-                                <a href={item.href} key={index}>{item.name}</a>
+                                <Link to={item.href} key={index}>{item.name}</Link>
                             ))
                         }
                     </div>
@@ -52,7 +53,7 @@ const Navbar = () => {
                 <div className="flex gap-8 xl:gap-12">
                     {
                         navlinks.map((item, index) => (
-                            <a href={item.href} key={index}>{item.name}</a>
+                            <Link to={item.href} key={index}>{item.name}</Link>
                         ))
                     }
                 </div>
