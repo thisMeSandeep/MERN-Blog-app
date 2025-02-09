@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Image from "./image";
 import { Link } from "react-router-dom"
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react"
 
 
 const navlinks = [
@@ -25,7 +26,7 @@ const Navbar = () => {
 
 
             {/* mobile menu */}
-            <div className="md:hidden">
+            <div className="md:hidden z-10">
                 {/* toggle button */}
                 <div className="cursor-pointer text-2xl" onClick={() => setOpen(!open)}>
                     {open ? "✖" : "☰"}
@@ -42,7 +43,14 @@ const Navbar = () => {
                         }
                     </div>
                     {/* login button */}
-                    <button className="py-2 px-10 rounded-3xl bg-blue-800 text-white">Login 👋</button>
+                    <SignedOut>
+                        <Link to="/login">
+                            <button className="py-2 px-10 rounded-3xl bg-blue-800 text-white">Login 👋</button>
+                        </Link>
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton />
+                    </SignedIn>
                 </div>
             </div>
 
@@ -58,7 +66,15 @@ const Navbar = () => {
                     }
                 </div>
                 {/* login button */}
-                <button className="py-2 px-10 rounded-3xl bg-blue-800 text-white">Login 👋</button>
+
+                <SignedOut>
+                    <Link to="/login">
+                        <button className="py-2 px-10 rounded-3xl bg-blue-800 text-white">Login 👋</button>
+                    </Link>
+                </SignedOut>
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
             </div>
         </div>
     )

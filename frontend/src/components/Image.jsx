@@ -1,6 +1,6 @@
 import { IKImage } from "imagekitio-react"
 
-const Image = ({ src, className, alt }) => {
+const Image = ({ src, className, alt, w, h }) => {
     return (
         <IKImage
             urlEndpoint={import.meta.env.VITE_IMAGEKIT_URL_ENDPOINT}
@@ -9,6 +9,12 @@ const Image = ({ src, className, alt }) => {
             loading="lazy"
             lqip={{ active: true, quality: 20 }}
             alt={alt}
+            transformation={[
+                {
+                    width: w,
+                    height: h,
+                }
+            ]}
         />
     )
 }
